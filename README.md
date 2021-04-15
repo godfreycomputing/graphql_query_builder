@@ -1,4 +1,5 @@
-A simple command-line application.
+Converts a set of nested maps to to a graphql query json string to be used with http.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+For the results leave the values null.
+
+Check the example for how to use and how to use with nested maps.
