@@ -14,8 +14,6 @@ class Methods extends MethodsBase {
     listOfParameters = listOfParameters.replaceAll(',}', '}');
     listOfParameters = listOfParameters.replaceAll(',)', ')');
 
-    print(listOfParameters);
-
     return listOfParameters;
   }
 
@@ -29,8 +27,6 @@ class Methods extends MethodsBase {
 
     listOfResults = listOfResults.replaceAll(',}', '}');
 
-    print(listOfResults);
-
     return listOfResults;
   }
 
@@ -40,7 +36,7 @@ class Methods extends MethodsBase {
     var listOfParameters = '';
     queries!.forEach((key, value) {
       if (value is BaseObject) {
-        listOfParameters += isParameters ? '{$key:' : '{$key';
+        listOfParameters += isParameters ? '$key:' : '$key';
         listOfParameters += addNestedObjects(
           baseObject: value,
           isParameterObject: isParameters,
@@ -49,6 +45,7 @@ class Methods extends MethodsBase {
         listOfParameters += addToQueryString(key, value);
       }
     });
+    listOfParameters += '}';
     return listOfParameters;
   }
 

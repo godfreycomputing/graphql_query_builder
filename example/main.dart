@@ -1,6 +1,6 @@
 import 'package:graphql_query_builder/graphql_query_builder.dart';
 
-void CreateQuery() {
+void main() {
   final parameterObject = ParameterObject(parameterObject: {
     'name': 'name',
     'description': 'description',
