@@ -1,4 +1,3 @@
-import 'base/base_methods.dart';
 import 'base/base_query.dart';
 import 'methods.dart';
 
@@ -24,7 +23,7 @@ class MutationBuilder extends BaseQuery {
     var resultsString = methods.buildResultsString(results);
 
     var queryString =
-        '{\"query\": {mutation {$operationName $parametersString $resultsString}';
+        '{\"query\": mutation {$operationName $parametersString $resultsString}';
 
     queryString.replaceAll(',}', '}');
 
