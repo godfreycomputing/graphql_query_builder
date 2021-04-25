@@ -11,10 +11,18 @@ class QueryBuilder extends BaseQuery {
   String buildQuery() {
     final methods = Methods();
     var resultsString = methods.buildResultsString(results);
+    var parametersString = methods.buildParametersString(parameters);
+    var queryString;
 
-    var queryString = '{\"query\": {$operationName $resultsString';
+    if (parameters.isEmpty || parameters == (null)) {
+      queryString = '{$operationName $resultsString}';
 
-    queryString.replaceAll(',}', '}');
+      queryString.replaceAll(',}', '}');
+
+      return queryString;
+    }
+
+    queryString = '{{$operationName $parametersString $resultsString}';
 
     return queryString;
   }
