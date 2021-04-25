@@ -1,4 +1,4 @@
-Converts a set of nested maps to to a graphql query json string to be used with http and the application/graphql header.
+Converts a set of nested maps to to a graphql query json string to be used with http and the application/graphql content header.
 
 For the results leave the values null.
 
