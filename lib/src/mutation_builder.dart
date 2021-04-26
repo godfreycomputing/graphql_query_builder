@@ -18,7 +18,9 @@ class MutationBuilder extends BaseQuery {
   ///Method to build the json string.
   String buildQuery() {
     final methods = Methods();
-    var parametersString = methods.buildParametersString(parameters);
+
+    var parametersString =
+        parameters == (null) ? '' : methods.buildParametersString(parameters);
 
     var resultsString = methods.buildResultsString(results);
 
