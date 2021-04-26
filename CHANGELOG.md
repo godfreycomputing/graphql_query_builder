@@ -13,3 +13,7 @@
 # 1.0.3
 
 - README now includes that the query must be used with application/graphql content header.
+
+# 1.0.4
+
+- Fixed mutation query to allow for null parameters when no parameters are required.
