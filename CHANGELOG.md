@@ -21,3 +21,7 @@
 # 1.0.5
 
 - Updated example to be more clear in how to use the package.
+
+# 1.0.6
+
+- Removed http dependency and updated example.
