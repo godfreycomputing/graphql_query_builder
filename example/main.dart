@@ -1,37 +1,59 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:graphql_query_builder/graphql_query_builder.dart';
 
-void main() {
-  final parameterObject = ParameterObject(parameterObject: {
-    'name': 'name',
-    'description': 'description',
-  });
-
-  final nestedResultObject =
-      ResultObject(resultObject: {'id': null, 'name': null});
-
-  final resultObject = ResultObject(resultObject: {
+Future<List<Category>> searchCategories(
+  String searchField,
+  String searchTerm,
+) async {
+  final operationName = 'searchCategories';
+  final parameters = {'searchField': searchField, 'searchTerm': searchTerm};
+  final categoryResultObject = ResultObject({
     'id': null,
     'name': null,
-    'category': nestedResultObject,
-  });
+    'description': null,
+    'imageUrl': null,
+  }).fields;
+  final results = {
+    'categories': categoryResultObject,
+    'success': null,
+    'message': null
+  };
 
-  final mutationBuilder = MutationBuilder(
-    'addToCart',
-    {'id': 'id', 'product': parameterObject},
-    {'id': null, 'product': resultObject},
+  final queryString = QueryBuilder(
+    operationName,
+    parameters,
+    results,
+  ).buildQuery();
+
+  final response = await http.post(
+    Uri(path: 'graphqlUrl'),
+    headers: {'Contexnt-Type': 'application/graphql'},
+    body: queryString,
   );
 
-  final queryBuilder = QueryBuilder(
-    'products',
-    {},
-    {'id': null, 'product': resultObject},
-  );
+  final data = jsonDecode(response.body)['data'][operationName];
 
-  var mutation = mutationBuilder.buildQuery();
+  return (data['categories'] as List)
+      .map((categoryData) => Category.fromMap(categoryData))
+      .toList();
+}
 
-  var query = queryBuilder.buildQuery();
+class Category {
+  final String? id;
+  final String? name;
+  final String? description;
+  final String? imageUrl;
 
-  print(mutation);
-  print('=======================');
-  print(query);
+  Category({this.id, this.name, this.description, this.imageUrl});
+
+  factory Category.fromMap(Map data) {
+    return Category(
+      id: data['id'],
+      name: data['name'],
+      description: data['description'],
+      imageUrl: data['imageUrl'],
+    );
+  }
 }
