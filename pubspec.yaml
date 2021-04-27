@@ -1,12 +1,11 @@
 name: graphql_query_builder
 description: Creates a graphql query string from maps to use with http.  This will make it much easier to create a query sstring.  Also, will work with unlimited levels of nested objects.
-version: 1.0.4
+version: 1.0.6
 repository: https://github.com/godfreycomputing/graphql_query_builder.git
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
-dependencies: 
-  http: ^0.13.1
+dependencies:
 dev_dependencies:
   pedantic: ^1.9.0
