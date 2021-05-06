@@ -25,7 +25,7 @@ class MutationBuilder extends BaseQuery {
     var resultsString = methods.buildResultsString(results);
 
     var queryString =
-        '{mutation {$operationName $parametersString $resultsString}';
+        'query: mutation {$operationName $parametersString $resultsString}';
 
     queryString.replaceAll(',}', '}');
 

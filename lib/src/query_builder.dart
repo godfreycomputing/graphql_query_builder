@@ -22,7 +22,7 @@ class QueryBuilder extends BaseQuery {
       return queryString;
     }
 
-    queryString = '{{$operationName $parametersString $resultsString}';
+    queryString = 'query: $operationName $parametersString $resultsString';
 
     return queryString;
   }
