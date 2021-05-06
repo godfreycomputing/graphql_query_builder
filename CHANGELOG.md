@@ -30,6 +30,6 @@
 
 - Fixed query and mutation strings
 
-# 1.0.8
+# 1.0.10
 
 - Fixed Null check used on null operator issue #23

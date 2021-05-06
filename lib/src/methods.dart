@@ -34,7 +34,7 @@ class Methods extends MethodsBase {
   String addAllNestedQueries(
       {Map<String, dynamic>? queries, bool isParameters = false}) {
     var listOfParameters = '';
-    queries!.forEach((key, value) {
+    queries?.forEach((key, value) {
       if (value is BaseObject) {
         listOfParameters += isParameters ? '$key:' : '$key';
         listOfParameters += addNestedObjects(
