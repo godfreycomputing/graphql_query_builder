@@ -3,7 +3,7 @@ import 'methods.dart';
 
 class QueryBuilder extends BaseQuery {
   ///Builds a query string to return results ie. {"query": {products {id name}}
-  QueryBuilder(String operationName, Map<String, dynamic> parameters,
+  QueryBuilder(String operationName, Map<String, dynamic>? parameters,
       Map<String, dynamic> results)
       : super(operationName, parameters, results);
 
@@ -14,7 +14,7 @@ class QueryBuilder extends BaseQuery {
     var parametersString = methods.buildParametersString(parameters);
     var queryString;
 
-    if (parameters.isEmpty || parameters == (null)) {
+    if (parameters == null) {
       queryString = '{$operationName $resultsString}';
 
       queryString.replaceAll(',}', '}');
