@@ -25,3 +25,7 @@
 # 1.0.6
 
 - Removed http dependency and updated example.
+
+# 1.0.7
+
+- Fixed query and mutation strings
