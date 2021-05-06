@@ -7,7 +7,7 @@ abstract class BaseObject {
 
 abstract class BaseQuery {
   final String operationName;
-  final Map<String, dynamic> parameters;
+  final Map<String, dynamic>? parameters;
   final Map<String, dynamic> results;
 
   BaseQuery(

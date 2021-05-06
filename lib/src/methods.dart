@@ -3,7 +3,7 @@ import 'base/base_query.dart';
 
 class Methods extends MethodsBase {
   @override
-  String buildParametersString(Map<String, dynamic> parameters) {
+  String buildParametersString(Map<String, dynamic>? parameters) {
     var listOfParameters = '(';
 
     listOfParameters +=
