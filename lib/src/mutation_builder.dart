@@ -16,7 +16,7 @@ class MutationBuilder extends BaseQuery {
   @override
 
   ///Method to build the json string.
-  String buildQuery() {
+  Map<String, dynamic> buildQuery() {
     final methods = Methods();
 
     var parametersString =
@@ -24,10 +24,9 @@ class MutationBuilder extends BaseQuery {
 
     var resultsString = methods.buildResultsString(results);
 
-    var queryString =
-        'query: mutation {$operationName $parametersString $resultsString}';
-
-    queryString.replaceAll(',}', '}');
+    var queryString = {
+      'query': '{mutation {$operationName $parametersString $resultsString}}'
+    };
 
     return queryString;
   }

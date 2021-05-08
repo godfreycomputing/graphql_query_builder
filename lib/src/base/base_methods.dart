@@ -12,5 +12,5 @@ abstract class MethodsBase {
     bool isParameters = false,
   });
 
-  String addNestedObjects({BaseObject? baseObject, bool? isParameterObject});
+  String addNestedObjects({BaseObject? baseObject, bool isParameterObject});
 }
