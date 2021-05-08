@@ -16,5 +16,5 @@ abstract class BaseQuery {
     this.results,
   );
 
-  String buildQuery();
+  Map<String, dynamic> buildQuery();
 }

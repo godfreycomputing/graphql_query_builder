@@ -21,11 +21,9 @@ class Methods extends MethodsBase {
   String buildResultsString(Map<String, dynamic> results) {
     var listOfResults = '{';
 
-    listOfResults += addAllNestedQueries(queries: results);
+    listOfResults += addAllNestedQueries(queries: results, isParameters: false);
 
     listOfResults += '}';
-
-    listOfResults = listOfResults.replaceAll(',}', '}');
 
     return listOfResults;
   }
@@ -41,11 +39,12 @@ class Methods extends MethodsBase {
           baseObject: value,
           isParameterObject: isParameters,
         );
+        listOfParameters += '}';
       } else {
         listOfParameters += addToQueryString(key, value);
       }
     });
-    listOfParameters += '}';
+
     return listOfParameters;
   }
 
@@ -57,11 +56,12 @@ class Methods extends MethodsBase {
   }
 
   @override
-  String addNestedObjects({BaseObject? baseObject, bool? isParameterObject}) {
+  String addNestedObjects(
+      {BaseObject? baseObject, bool isParameterObject = false}) {
     var listOfFields = '{';
     baseObject!.fields!.forEach((key, value) {
       if (value is BaseObject) {
-        listOfFields += isParameterObject! ? '$key:' : '$key';
+        listOfFields += isParameterObject ? '$key:' : '$key';
         listOfFields += addNestedObjects(baseObject: value);
         listOfFields += '}';
       } else {

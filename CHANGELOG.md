@@ -33,3 +33,7 @@
 # 1.0.10
 
 - Fixed Null check used on null operator issue #23
+
+# 1.0.14
+
+- More bug fixes

@@ -8,21 +8,21 @@ class QueryBuilder extends BaseQuery {
       : super(operationName, parameters, results);
 
   @override
-  String buildQuery() {
+  Map<String, dynamic> buildQuery() {
     final methods = Methods();
     var resultsString = methods.buildResultsString(results);
     var parametersString = methods.buildParametersString(parameters);
     var queryString;
 
     if (parameters == null) {
-      queryString = '{$operationName $resultsString}';
-
-      queryString.replaceAll(',}', '}');
+      queryString = {'query': '{$operationName $resultsString}'};
 
       return queryString;
     }
 
-    queryString = 'query: $operationName $parametersString $resultsString';
+    queryString = {
+      'query': '{$operationName $parametersString $resultsString}'
+    };
 
     return queryString;
   }

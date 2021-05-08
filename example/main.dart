@@ -1,6 +1,6 @@
 import 'package:graphql_query_builder/graphql_query_builder.dart';
 
-String buildSearchQuery(
+Map<String, dynamic> buildSearchQuery(
   String searchField,
   String searchTerm,
 ) {
